@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="s7" width="540" height="960" viewBox="0 0 540 960"><defs><linearGradient id="g7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1d6"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient></defs><rect width="540" height="960" fill="url(#g7)"/>
+    <g font-family="Arial, sans-serif" font-weight="700" font-size="26">
+      <rect x="30" y="90" width="480" height="110" rx="18" fill="#fff"/><text x="60" y="155">✔ Azúcar y presión controladas</text>
+      <rect x="30" y="215" width="480" height="110" rx="18" fill="#fff"/><text x="60" y="280">✔ Menos sal 🧂</text>
+      <rect x="30" y="340" width="480" height="110" rx="18" fill="#fff"/><text x="60" y="405" fill="#b00">✖ Antiinflamatorios sin receta</text>
+    </g>
+    
+<g transform="translate(160,600) scale(0.75)">
+  <path d="M0 -60 c55 -10 80 40 70 85 c-8 40 -50 55 -75 35 c-15 -12 -5 -30 -20 -40 c-20 -14 -45 -10 -45 -40 c0 -25 25 -38 70 -40z" fill="#a8324a"/>
+  <rect x="-40" y="25" width="80" height="45" rx="10" fill="#f2b632"/>
+  <rect x="-25" y="15" width="10" height="25" fill="#f2b632"/><rect x="15" y="15" width="10" height="25" fill="#f2b632"/>
+  
+  <circle cx="-12" cy="-15" r="9" fill="#fff"/><circle cx="16" cy="-15" r="9" fill="#fff"/>
+  <circle cx="-11" cy="-14" r="4" fill="#222"/><circle cx="17" cy="-14" r="4" fill="#222"/>
+  <path d="M-12 4 q14 14 28 0" stroke="#3a0f18" stroke-width="4" fill="none"/>
+</g>
+<g transform="translate(380,600) scale(0.75)">
+  <path d="M0 -60 c55 -10 80 40 70 85 c-8 40 -50 55 -75 35 c-15 -12 -5 -30 -20 -40 c-20 -14 -45 -10 -45 -40 c0 -25 25 -38 70 -40z" fill="#a8324a"/>
+  <rect x="-40" y="25" width="80" height="45" rx="10" fill="#f2b632"/>
+  <rect x="-25" y="15" width="10" height="25" fill="#f2b632"/><rect x="15" y="15" width="10" height="25" fill="#f2b632"/>
+  
+  <circle cx="-12" cy="-15" r="9" fill="#fff"/><circle cx="16" cy="-15" r="9" fill="#fff"/>
+  <circle cx="-11" cy="-14" r="4" fill="#222"/><circle cx="17" cy="-14" r="4" fill="#222"/>
+  <path d="M-12 4 q14 14 28 0" stroke="#3a0f18" stroke-width="4" fill="none"/>
+</g><g transform="translate(270,560) scale(1.1)"><path d="M0 30 c-60 -40 -50 -90 -15 -90 c10 0 15 8 15 14 c0 -6 5 -14 15 -14 c35 0 45 50 -15 90z" fill="#e63946"/><circle cx="-12" cy="-30" r="5"/><path d="M8 -34 q6 -4 12 0" stroke="#222" stroke-width="4" fill="none"/><path d="M-12 -12 q12 10 24 0" stroke="#222" stroke-width="4" fill="none"/></g>
+    <g font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle">
+    <text x="270" y="790" font-size="32" fill="#fff" stroke="#000" stroke-width="7" paint-order="stroke">Tu corazón también</text><text x="270" y="832" font-size="32" fill="#fff" stroke="#000" stroke-width="7" paint-order="stroke">lo agradecerá ❤️</text>
+  </g><g font-family="Arial, sans-serif"><rect x="16" y="16" width="190" height="42" rx="21" fill="#000" opacity=".55"/><text x="111" y="44" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">ESC 7 · 9 s</text></g></svg>

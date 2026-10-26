@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="s1" width="540" height="960" viewBox="0 0 540 960"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9a8"/><stop offset="1" stop-color="#f5a25d"/></linearGradient></defs><rect width="540" height="960" fill="url(#g1)"/>
+    <rect x="0" y="640" width="540" height="320" fill="#8c8c8c"/><g transform="translate(390,610) scale(0.9)"><rect x="-120" y="-40" width="240" height="70" rx="20" fill="#e2384d"/><path d="M-70 -40 q20 -40 60 -40 h40 q40 0 50 40z" fill="#f4f4f4"/><rect x="-60" y="-70" width="45" height="28" rx="6" fill="#9fd8f5"/><rect x="0" y="-70" width="45" height="28" rx="6" fill="#9fd8f5"/><circle cx="-70" cy="32" r="24" fill="#222"/><circle cx="70" cy="32" r="24" fill="#222"/><rect x="-20" y="-96" width="40" height="16" rx="4" fill="#ffd23f"/></g>
+    
+<g transform="translate(220,360) scale(1.25)">
+  <rect x="-70" y="60" width="140" height="190" rx="40" fill="#3b6fb6"/>
+  <path d="M-70 110 h140 M-70 160 h140 M-70 210 h140 M-35 60 v190 M0 60 v190 M35 60 v190" stroke="#2a5594" stroke-width="5"/>
+  <circle cx="0" cy="0" r="62" fill="#c98a5e"/>
+  <path d="M-64 -18 q64 -70 128 0 v-14 q-64 -50 -128 0z" fill="#d23b33"/>
+  <rect x="-10" y="-34" width="90" height="16" rx="8" fill="#d23b33"/>
+  <circle cx="-22" cy="-2" r="7" fill="#2b1d14"/><circle cx="22" cy="-2" r="7" fill="#2b1d14"/>
+  <path d="M-30 22 q30 18 60 0" stroke="#3a2618" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M-20 38 q20 16 40 0" stroke="#7a2b1f" stroke-width="5" fill="none"/>
+  <g transform="translate(95,90)"><rect x="-18" y="0" width="36" height="40" rx="10" fill="#c98a5e"/><rect x="-8" y="-30" width="16" height="36" rx="8" fill="#c98a5e"/></g>
+  <path d="M70 120 l20 -20" stroke="#3b6fb6" stroke-width="30" stroke-linecap="round"/>
+</g>
+    <rect x="110" y="410" width="230" height="200" rx="24" fill="#0b2a3a" opacity=".85" stroke="#5fd3ff" stroke-width="4"/>
+    
+<g transform="translate(170,515) scale(0.7)">
+  <path d="M0 -60 c55 -10 80 40 70 85 c-8 40 -50 55 -75 35 c-15 -12 -5 -30 -20 -40 c-20 -14 -45 -10 -45 -40 c0 -25 25 -38 70 -40z" fill="#a8324a"/>
+  <rect x="-40" y="25" width="80" height="45" rx="10" fill="#f2b632"/>
+  <rect x="-25" y="15" width="10" height="25" fill="#f2b632"/><rect x="15" y="15" width="10" height="25" fill="#f2b632"/>
+  <path d="M-38 -48 q38 -45 76 0z" fill="#f2b632"/><rect x="-44" y="-50" width="88" height="8" rx="4" fill="#d99a1a"/>
+  <circle cx="-12" cy="-15" r="9" fill="#fff"/><circle cx="16" cy="-15" r="9" fill="#fff"/>
+  <circle cx="-11" cy="-14" r="4" fill="#222"/><circle cx="17" cy="-14" r="4" fill="#222"/>
+  <path d="M-10 8 q12 -8 24 0" stroke="#3a0f18" stroke-width="4" fill="none"/><path d="M38 -30 q6 12 0 18 q-6 -6 0 -18z" fill="#7fd0ff"/><path d="M-36 -20 q5 10 0 15 q-5 -5 0 -15z" fill="#7fd0ff"/>
+</g>
+<g transform="translate(285,515) scale(0.7)">
+  <path d="M0 -60 c55 -10 80 40 70 85 c-8 40 -50 55 -75 35 c-15 -12 -5 -30 -20 -40 c-20 -14 -45 -10 -45 -40 c0 -25 25 -38 70 -40z" fill="#a8324a"/>
+  <rect x="-40" y="25" width="80" height="45" rx="10" fill="#f2b632"/>
+  <rect x="-25" y="15" width="10" height="25" fill="#f2b632"/><rect x="15" y="15" width="10" height="25" fill="#f2b632"/>
+  <path d="M-38 -48 q38 -45 76 0z" fill="#f2b632"/><rect x="-44" y="-50" width="88" height="8" rx="4" fill="#d99a1a"/>
+  <circle cx="-12" cy="-15" r="9" fill="#fff"/><circle cx="16" cy="-15" r="9" fill="#fff"/>
+  <circle cx="-11" cy="-14" r="4" fill="#222"/><circle cx="17" cy="-14" r="4" fill="#222"/>
+  <path d="M-10 8 q12 -8 24 0" stroke="#3a0f18" stroke-width="4" fill="none"/><path d="M38 -30 q6 12 0 18 q-6 -6 0 -18z" fill="#7fd0ff"/><path d="M-36 -20 q5 10 0 15 q-5 -5 0 -15z" fill="#7fd0ff"/>
+</g><g transform="translate(228,440)"><circle r="16" fill="#ff3b3b"/><circle r="28" fill="#ff3b3b" opacity=".25"/><rect x="-7" y="14" width="14" height="10" fill="#777"/></g>
+    <path d="M100 470 h250" stroke="#5fd3ff" stroke-width="3" opacity=".8"/>
+    <g font-family="Arial Black, Arial, sans-serif" font-weight="900" text-anchor="middle">
+    <text x="270" y="820" font-size="30" fill="#fff" stroke="#000" stroke-width="7" paint-order="stroke">¿Te sientes bien? 👍</text><text x="270" y="860" font-size="30" fill="#fff" stroke="#000" stroke-width="7" paint-order="stroke">Tus riñones podrían no estarlo</text>
+  </g><g font-family="Arial, sans-serif"><rect x="16" y="16" width="190" height="42" rx="21" fill="#000" opacity=".55"/><text x="111" y="44" font-size="20" fill="#fff" text-anchor="middle" font-weight="700">ESC 1 · 3 s</text></g></svg>

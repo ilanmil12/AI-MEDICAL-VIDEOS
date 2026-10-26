@@ -5,7 +5,7 @@
 |---|---|
 | 1. Ganchos | ✅ Aprobada |
 | 2. Evidencia | ✅ Aprobada |
-| 3. Guion y storyboard | ⏳ En curso — elegir enfoque narrativo |
+| 3. Guion y storyboard | ⏳ En revisión — guion v1 + storyboard preliminar entregados |
 | 4. Diseño visual | Pendiente |
 | 5. Primer borrador | Pendiente |
 | 6. Auditoría | Pendiente |
@@ -43,11 +43,16 @@ Enfermedad renal crónica
 - Antiinflamatorios: enfatizar uso frecuente/sin supervisión, no uso ocasional.
 - No presentar la cifra "9 de cada 10 no lo saben" (EE. UU.) como dato mexicano.
 
+## Enfoque narrativo aprobado
+A + C: personajes con humor (Don Beto, Rina y Rony) + metáfora de los filtros (nefronas) que se apagan en silencio.
+
 ## Guion vigente
-—
+guion-v1.md (~58 s, 8 escenas) · storyboard/ (bocetos vectoriales preliminares)
+- Pendiente: aprobación de fuente nueva [11] Bertram 2011 (número de nefronas).
 
 ## Escenas aprobadas / pendientes
-—
+- Aprobadas: ninguna aún
+- Pendientes de revisión: 1–8
 
 ## Recursos visuales definitivos
 —
