@@ -7,7 +7,7 @@
 | 2. Evidencia | ✅ Aprobada |
 | 3. Guion y storyboard | ✅ Aprobada (guion v1, 8 escenas, ~58 s) |
 | 4. Diseño visual | ✅ Aprobada |
-| 5. Primer borrador | ⏳ En revisión — borrador v1 (MP4) entregado |
+| 5. Primer borrador | ⏳ En revisión — borrador v2 (MP4) entregado |
 | 6. Auditoría | Pendiente |
 | 7. Producto final | Pendiente |
 | 8. Publicación | Pendiente |
@@ -61,9 +61,10 @@ guion-v1.md (~58 s, 8 escenas) — APROBADO · storyboard/ (bocetos vectoriales 
 
 ## Versiones del borrador
 - v1: entregables/borrador-v1.mp4 — 57.3 s, 1080×1920, 30 fps (animación 3D a 15 fps), H.264/AAC, −14.3 LUFS. Voz es-MX-JorgeNeural (+8 %), música y efectos sintetizados por código, tipografía Baloo 2 (OFL).
+- v2: entregables/borrador-v2.mp4 — 59.6 s. Cambios pedidos por el usuario: cierre suave (despedida de Beto, acorde final, fundido a negro y de audio), brazos articulados con guantes de 3 dedos, personajes con más detalle (iris, párpados, mejillas, bocas abiertas, hilio renal con arteria/vena/uréter, ropa y accesorios).
 
 ## Correcciones efectuadas
-—
+- v1→v2: escena 8 alargada 2.8 s para cerrar sin corte seco; rediseño de brazos/manos y detalle de personajes (afecta todas las escenas; el guion y las afirmaciones no cambian).
 
 ## Plataformas seleccionadas
 —
