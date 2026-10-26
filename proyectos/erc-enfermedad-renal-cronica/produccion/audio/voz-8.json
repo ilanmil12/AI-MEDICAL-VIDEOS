@@ -1,0 +1,82 @@
+[
+ {
+  "texto": "Tienes",
+  "inicio": 0.096291,
+  "dur": 0.3125
+ },
+ {
+  "texto": "diabetes",
+  "inicio": 0.420375,
+  "dur": 0.544
+ },
+ {
+  "texto": "presión",
+  "inicio": 1.172666,
+  "dur": 0.3935
+ },
+ {
+  "texto": "alta",
+  "inicio": 1.577791,
+  "dur": 0.300916
+ },
+ {
+  "texto": "obesidad",
+  "inicio": 2.12175,
+  "dur": 0.50925
+ },
+ {
+  "texto": "o",
+  "inicio": 2.642583,
+  "dur": 0.0462909
+ },
+ {
+  "texto": "familiares",
+  "inicio": 2.700458,
+  "dur": 0.567125
+ },
+ {
+  "texto": "con",
+  "inicio": 3.279166,
+  "dur": 0.150458
+ },
+ {
+  "texto": "enfermedad",
+  "inicio": 3.441208,
+  "dur": 0.555541
+ },
+ {
+  "texto": "renal",
+  "inicio": 4.008333,
+  "dur": 0.42825
+ },
+ {
+  "texto": "Pide",
+  "inicio": 5.243041,
+  "dur": 0.254625
+ },
+ {
+  "texto": "hoy",
+  "inicio": 5.50925,
+  "dur": 0.185166
+ },
+ {
+  "texto": "tus",
+  "inicio": 5.706,
+  "dur": 0.173625
+ },
+ {
+  "texto": "estudios",
+  "inicio": 5.891208,
+  "dur": 0.486125
+ },
+ {
+  "texto": "de",
+  "inicio": 6.388875,
+  "dur": 0.069458
+ },
+ {
+  "texto": "riñón",
+  "inicio": 6.469916,
+  "dur": 0.439833
+ }
+]

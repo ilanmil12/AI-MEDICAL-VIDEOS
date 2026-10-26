@@ -12,6 +12,8 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { SCENES, SCENE_LIST } from '/www/scenes.js';
 
+// Parámetros: scene, layer, w, h, t (segundo a renderizar en modo imagen fija).
+// En modo animación el driver llama window.renderFrame(t) por cada cuadro.
 const q = new URLSearchParams(location.search);
 const id = +q.get('scene'), layer = q.get('layer') || 'main';
 const W = +(q.get('w') || 1080), H = +(q.get('h') || 1920);
@@ -25,7 +27,7 @@ try {
   const env = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
 
   const [name, opts] = SCENE_LIST[id];
-  const { layers, meta } = SCENES[name](W / H * (layer === 'top' || layer === 'bottom' ? 0.5 : 1), opts);
+  const { layers, meta, update } = SCENES[name](W / H * (layer === 'top' || layer === 'bottom' ? 0.5 : 1), opts);
   const L = layers[layer];
   L.scene.environment = env; L.scene.environmentIntensity = 0.45;
   L.camera.aspect = W / H; L.camera.updateProjectionMatrix();
@@ -35,17 +37,22 @@ try {
   composer.addPass(new RenderPass(L.scene, L.camera));
   if (L.bloom) composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), L.bloom, 0.5, 0.93));
   composer.addPass(new OutputPass());
-  composer.render();
 
-  // proyección de cajas de metadatos a píxeles
-  const out = {};
-  if (meta.xrayBox) {
-    const pts = meta.xrayBox.map(p => new THREE.Vector3(...p).project(L.camera));
-    const xs = pts.map(p => (p.x + 1) / 2 * W), ys = pts.map(p => (1 - p.y) / 2 * H);
-    out.xrayRect = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)].map(Math.round);
+  window.renderFrame = (t, fmt = 'image/jpeg') => {
+    update && update(t);
+    composer.render();
+    const out = {};
+    if (meta.xrayBox) { // ventana de rayos X proyectada a píxeles
+      const pts = meta.xrayBox.map(p => new THREE.Vector3(...p).project(L.camera));
+      const xs = pts.map(p => (p.x + 1) / 2 * W), ys = pts.map(p => (1 - p.y) / 2 * H);
+      out.xrayRect = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)].map(Math.round);
+    }
+    return { img: renderer.domElement.toDataURL(fmt, 0.95), meta: out };
+  };
+  if (q.has('t') || !q.has('anim')) {
+    const r = window.renderFrame(+(q.get('t') || 1.5), 'image/png');
+    window.__meta = r.meta; window.__png = r.img;
   }
-  window.__meta = out;
-  window.__png = renderer.domElement.toDataURL('image/png');
   window.__done = true;
 } catch (e) { window.__error = String(e && e.stack || e); window.__done = true; }
 </script>

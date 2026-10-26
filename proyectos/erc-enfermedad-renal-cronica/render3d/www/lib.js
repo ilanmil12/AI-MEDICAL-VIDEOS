@@ -276,18 +276,29 @@ export function itzel(parent, opts = {}) {
 }
 
 // ---------- Nefrona / filtro ----------
+// Devuelve el grupo con g.setOn(bool) para encender/apagar y g.shield (grupo del escudo) para animarlo.
 export function nephronUnit(parent, p, on = true, shield = false, s = 1) {
   const g = group(parent, p, [0, 0, 0], s);
-  add(g, rbox(0.9, 1.25, 0.5, 0.18), mat(on ? 0x15354c : 0x242424, { roughness: 0.3, clearcoat: 0.8 }));
-  add(g, rbox(0.98, 1.33, 0.4, 0.2), on ? glow(C.cyan, 0.35) : mat(0x4a4a4a), [0, 0, -0.08]);
-  const glom = on ? glow(C.pink, 1.4) : mat(0x5a5a5a, { roughness: 0.7 });
-  add(g, new THREE.TorusKnotGeometry(0.17, 0.045, 128, 16, 3, 7), glom, [0, 0.27, 0.28]);
-  add(g, new THREE.SphereGeometry(0.27, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.8), mat(on ? 0x9ef0ff : 0x666666, { transparent: true, opacity: 0.25, roughness: 0.1 }), [0, 0.27, 0.28], [Math.PI, 0, 0]);
-  const tm = on ? glow(0x9ef0ff, 1.1) : mat(0x5a5a5a);
-  add(g, tube([[0.05, 0.02, 0.28], [0.18, -0.15, 0.3], [0.2, -0.45, 0.3], [0.08, -0.52, 0.3], [-0.05, -0.45, 0.3], [-0.08, -0.15, 0.3], [-0.2, -0.05, 0.3]], 0.04), tm);
+  const parts = [ // [material encendido, material apagado]
+    [mat(0x15354c, { roughness: 0.3, clearcoat: 0.8 }), mat(0x242424, { roughness: 0.3, clearcoat: 0.8 })],
+    [glow(C.cyan, 0.35), mat(0x4a4a4a)],
+    [glow(C.pink, 1.4), mat(0x5a5a5a, { roughness: 0.7 })],
+    [mat(0x9ef0ff, { transparent: true, opacity: 0.25, roughness: 0.1 }), mat(0x666666, { transparent: true, opacity: 0.25, roughness: 0.1 })],
+    [glow(0x9ef0ff, 1.1), mat(0x5a5a5a)],
+  ];
+  const meshes = [
+    add(g, rbox(0.9, 1.25, 0.5, 0.18), parts[0][0]),
+    add(g, rbox(0.98, 1.33, 0.4, 0.2), parts[1][0], [0, 0, -0.08]),
+    add(g, new THREE.TorusKnotGeometry(0.17, 0.045, 128, 16, 3, 7), parts[2][0], [0, 0.27, 0.28]),
+    add(g, new THREE.SphereGeometry(0.27, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.8), parts[3][0], [0, 0.27, 0.28], [Math.PI, 0, 0]),
+    add(g, tube([[0.05, 0.02, 0.28], [0.18, -0.15, 0.3], [0.2, -0.45, 0.3], [0.08, -0.52, 0.3], [-0.05, -0.45, 0.3], [-0.08, -0.15, 0.3], [-0.2, -0.05, 0.3]], 0.04), parts[4][0]),
+  ];
+  g.setOn = v => meshes.forEach((m, i) => (m.material = parts[i][v ? 0 : 1]));
+  g.setOn(on);
   if (shield) {
-    const sh = add(g, cyl(0.62, 0.62, 0.06, 6), mat(C.mint, { transparent: true, opacity: 0.38, emissive: C.mint, emissiveIntensity: 0.5, roughness: 0.1, clearcoat: 1 }), [0, 0, 0.5], [Math.PI / 2, 0, 0]);
-    add(g, new THREE.TorusGeometry(0.62, 0.03, 8, 6), glow(C.mint, 1.4), [0, 0, 0.53], [0, 0, Math.PI / 6]);
+    g.shield = group(g, [0, 0, 0.5]);
+    add(g.shield, cyl(0.62, 0.62, 0.06, 6), mat(C.mint, { transparent: true, opacity: 0.38, emissive: C.mint, emissiveIntensity: 0.5, roughness: 0.1, clearcoat: 1 }), [0, 0, 0], [Math.PI / 2, 0, 0]);
+    add(g.shield, new THREE.TorusGeometry(0.62, 0.03, 8, 6), glow(C.mint, 1.4), [0, 0, 0.03], [0, 0, Math.PI / 6]);
   }
   return g;
 }
