@@ -6,8 +6,8 @@
 | 1. Ganchos | ✅ Aprobada |
 | 2. Evidencia | ✅ Aprobada |
 | 3. Guion y storyboard | ✅ Aprobada (guion v1, 8 escenas, ~58 s) |
-| 4. Diseño visual | ⏳ En revisión — 8 escenas 3D generadas por código (Three.js) |
-| 5. Primer borrador | Pendiente |
+| 4. Diseño visual | ✅ Aprobada |
+| 5. Primer borrador | ⏳ En revisión — borrador v1 (MP4) entregado |
 | 6. Auditoría | Pendiente |
 | 7. Producto final | Pendiente |
 | 8. Publicación | Pendiente |
@@ -56,11 +56,11 @@ guion-v1.md (~58 s, 8 escenas) — APROBADO · storyboard/ (bocetos vectoriales 
 - Pendientes: ninguna
 
 ## Recursos visuales definitivos
-- v1 (en revisión): assets/escenas/escena-1..8.png (1080×1920), hoja: assets/hoja-escenas-3d.png
+- v1 (aprobada): assets/escenas/escena-1..8.png (1080×1920), hoja: assets/hoja-escenas-3d.png
 - Motor: render3d/ (Three.js + Chromium sin interfaz; `node render.js && python3 compose.py`)
 
 ## Versiones del borrador
-—
+- v1: entregables/borrador-v1.mp4 — 57.3 s, 1080×1920, 30 fps (animación 3D a 15 fps), H.264/AAC, −14.3 LUFS. Voz es-MX-JorgeNeural (+8 %), música y efectos sintetizados por código, tipografía Baloo 2 (OFL).
 
 ## Correcciones efectuadas
 —
