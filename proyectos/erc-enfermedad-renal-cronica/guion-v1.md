@@ -1,4 +1,4 @@
-# Guion v1 — "Los Riñoncitos en huelga silenciosa" (Enfoque A + C)
+# Guion v1 — "Los Riñoncitos en huelga silenciosa" (Enfoque A + C) — ✅ APROBADO
 
 - Duración total: ~58 s · Formato vertical 9:16
 - Narración: voz cálida, español de México, ritmo ~2.5 palabras/s (~143 palabras)
@@ -29,7 +29,7 @@
 - **Cámara:** Travelling lateral por el pasillo de filtros; ligero dolly-out para mostrar la escala.
 - **Música/SFX:** Cumbia sigue suave; burbujeo de líquido; clics de maquinaria.
 - **Transición:** Parpadeo de luz → un filtro se apaga (corte en movimiento).
-- **Referencias:** Número de nefronas → [11] Bertram 2011 *(fuente nueva, pendiente de aprobación)*.
+- **Referencias:** Número de nefronas → [11] Bertram 2011.
 
 ## Escena 3 — Se apagan en silencio (0:11–0:19 · 8 s)
 - **Narración:** "Cuando algunos se dañan, los demás trabajan horas extra para compensar. Por eso, al principio, casi nunca hay síntomas."
@@ -101,4 +101,4 @@
 - [6] Kalantar-Zadeh K, et al. Lancet 2021. DOI 10.1016/S0140-6736(21)00519-5
 - [7] NDPH Renal Studies Group / SMART-C. Lancet 2022. DOI 10.1016/S0140-6736(22)02074-8
 - [8] Argaiz ER, et al. Gac Med Mex 2023. DOI 10.24875/GMM.23000393
-- [11] Bertram JF, et al. Human nephron number: implications for health and disease. Pediatr Nephrol 2011;26:1529–1533. DOI 10.1007/s00467-011-1843-8 · PMID 21604189 *(pendiente de aprobación)*
+- [11] Bertram JF, et al. Human nephron number: implications for health and disease. Pediatr Nephrol 2011;26:1529–1533. DOI 10.1007/s00467-011-1843-8 · PMID 21604189 (aprobada)

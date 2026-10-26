@@ -5,8 +5,8 @@
 |---|---|
 | 1. Ganchos | ✅ Aprobada |
 | 2. Evidencia | ✅ Aprobada |
-| 3. Guion y storyboard | ⏳ En revisión — guion v1 + storyboard preliminar entregados |
-| 4. Diseño visual | Pendiente |
+| 3. Guion y storyboard | ✅ Aprobada (guion v1, 8 escenas, ~58 s) |
+| 4. Diseño visual | ⏳ En curso — guía de continuidad lista; falta herramienta de generación 3D |
 | 5. Primer borrador | Pendiente |
 | 6. Auditoría | Pendiente |
 | 7. Producto final | Pendiente |
@@ -29,6 +29,7 @@ Enfermedad renal crónica
 7. NDPH Renal Studies Group / SMART-C. Lancet 2022;400:1788–1801. DOI 10.1016/S0140-6736(22)02074-8 · PMID 36351458
 8. Argaiz ER, et al. Gac Med Mex 2023;159(6):501. DOI 10.24875/GMM.23000393
 9. Maya-Quintá R, et al. Ren Fail 2023;45(1):2222836. DOI 10.1080/0886022X.2023.2222836 · PMID 37317525 (opcional)
+11. Bertram JF, et al. Pediatr Nephrol 2011;26:1529–1533. DOI 10.1007/s00467-011-1843-8 · PMID 21604189 (número de nefronas; aprobada en Fase 3)
 
 ## Afirmaciones científicas autorizadas
 - M1: La ERC casi nunca da síntomas en etapas tempranas; puedes sentirte bien y tenerla. [2][3]
@@ -47,12 +48,12 @@ Enfermedad renal crónica
 A + C: personajes con humor (Don Beto, Rina y Rony) + metáfora de los filtros (nefronas) que se apagan en silencio.
 
 ## Guion vigente
-guion-v1.md (~58 s, 8 escenas) · storyboard/ (bocetos vectoriales preliminares)
-- Pendiente: aprobación de fuente nueva [11] Bertram 2011 (número de nefronas).
+guion-v1.md (~58 s, 8 escenas) — APROBADO · storyboard/ (bocetos vectoriales preliminares) — APROBADO
+- Guía de continuidad visual: guia-continuidad-visual.md
 
 ## Escenas aprobadas / pendientes
-- Aprobadas: ninguna aún
-- Pendientes de revisión: 1–8
+- Aprobadas: 1–8
+- Pendientes: ninguna
 
 ## Recursos visuales definitivos
 —
