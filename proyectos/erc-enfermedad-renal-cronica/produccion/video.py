@@ -1,6 +1,6 @@
 """Monta el video: cuadros 3D + ventana de rayos X + pantalla dividida + transiciones
 + rótulos + subtítulos sincronizados, y lo une con la mezcla de audio.
-Uso: python3 video.py [--preview SEG] → salida/borrador-v1.mp4"""
+Uso: python3 video.py [--preview SEG] → salida/borrador-<VERSION>.mp4"""
 import json
 import subprocess
 import sys
@@ -18,6 +18,7 @@ OUT = HERE / 'salida'
 W, H, FPS = 1080, 1920, TL['fps']
 ESC = TL['escenas']
 FONT = str(HERE / 'fuentes' / 'Baloo2.ttf')
+VERSION = 'v2'
 
 AMARILLO, CIRUELA, MENTA, CIAN = (242, 182, 50), (168, 50, 74), (107, 227, 138), (95, 211, 255)
 # Transición en el corte que inicia la escena n (duración en s)
@@ -193,6 +194,7 @@ def subtitulo(lienzo, t):
 
 def fotograma(t):
     img = base(t).convert('RGBA')
+    fundido = ease((t - (TL['total'] - 0.9)) / 0.9)  # cierre: fundido a negro en el último segundo
     for r in ROTULOS:
         if r['t0'] <= t < r['t1']:
             im = rotulo_img(r['tipo'], r['texto'])
@@ -200,6 +202,7 @@ def fotograma(t):
             escala = ease_back(entra) if r['tipo'] not in ('pie', 'nota') else 1.0
             pegar(img, im, W / 2, r['y'], escala, min(1, ease(entra * 1.5), ease(sale)))
     subtitulo(img, t)
+    if fundido > 0: img = Image.blend(img, Image.new('RGBA', (W, H), (0, 0, 0, 255)), fundido)
     return img.convert('RGB')
 
 
@@ -218,7 +221,7 @@ def main():
         ff.stdin.write(fotograma(f / FPS).tobytes())
         if f % 150 == 0: print(f'  cuadro {f}/{n}', flush=True)
     ff.stdin.close(); ff.wait()
-    final = OUT / 'borrador-v1.mp4'
+    final = OUT / f'borrador-{VERSION}.mp4'
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(video), '-i', str(HERE / 'audio' / 'mezcla.wav'),
                     '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
                     '-shortest', '-movflags', '+faststart', str(final)], check=True)

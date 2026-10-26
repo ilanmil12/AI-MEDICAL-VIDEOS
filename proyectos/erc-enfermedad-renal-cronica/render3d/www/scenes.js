@@ -105,13 +105,17 @@ export const SCENES = {
       ups.push(street(s, { sunset: ending }));
       stdLights(s, ending ? { key: 0xffb070, keyI: 2.4, keyPos: [-8, 6, 6], hemiSky: 0xffb38a, hemiGround: 0x4a2a4a, rim: 0xff8a5a, rimI: 2 } : {});
       taxi(s, [2.6, 0, -2.2], [0, -0.45, 0], 1);
-      const b = beto(s, { mood: 'happy', thumbs: 'right', armR: { angle: 0.55, bend: -2.0 }, armL: { angle: 0.12 } });
+      const b = beto(s, { mood: 'happy', thumbs: 'right', armR: { angle: 0.55, bend: -2.0 }, armL: { angle: 0.12, pose: ending ? 'abierta' : 'relajada' } });
       b.root.position.set(0.35, 0, 1.2);
       const c = cam(aspect, [0.6, 2.7, 13], [0.6, 2.35, 0], 36);
       ups.push(t => {
         b.root.position.y = 0.03 * Math.abs(wave(t, 0.9));
         b.aR.sh.rotation.z = 0.55 + 0.06 * wave(t, 1.6);
         b.head.rotation.z = 0.04 * wave(t, 0.5);
+        if (ending) { // despedida: levanta la mano y saluda tras la última frase
+          const g = ease((t - 6.9) / 0.5);
+          b.aL.sh.rotation.z = lerp(-0.12, -2.35, g); b.aL.el.rotation.z = g * 0.45 * wave(t, 2.0);
+        }
         const z = ending ? lerp(11.8, 13.2, ease(t / 6)) : lerp(13.2, 11.6, ease(t / 3.5));
         moveCam(c, [0.6, 2.7, z]);
       });
@@ -119,7 +123,7 @@ export const SCENES = {
         s.children.filter(o => o !== b.root && !o.isLight).forEach(o => (o.visible = false));
         xrayify(b.root, s);
         const k = group(b.root, [0, 1.25, 0.05], [0, 0, 0], 0.32);
-        const left = kidneyChar(k, { who: 'rina', mood: ending ? 'happy' : 'sweat', legs: false, armL: { angle: ending ? -0.2 : -0.5 }, armR: ending ? { angle: 2.6, thumb: true } : { angle: 0.5 } });
+        const left = kidneyChar(k, { who: 'rina', mood: ending ? 'happy' : 'sweat', legs: false, armL: { angle: ending ? -0.2 : -0.5 }, armR: ending ? { angle: 2.6, thumb: true } : { angle: 0.5, pose: 'abierta' } });
         left.root.position.set(1.1, 0, 0);
         const right = kidneyChar(k, { who: 'rony', mood: ending ? 'happy' : 'sweat', legs: false, mirror: true, armL: ending ? { angle: -2.6, thumb: true } : { angle: -0.5 }, armR: { angle: 0.3 } });
         right.root.position.set(-1.2, 0, 0);
@@ -143,14 +147,14 @@ export const SCENES = {
     const s = new THREE.Scene(); const flow = plant(s);
     stdLights(s, { key: 0xcfefff, keyI: 1.6, hemiSky: 0x3a7ca5, hemiGround: 0x0b1a28, hemiI: 0.7, rim: 0x5fd3ff, rimI: 1.2 });
     nephronField(s, ['11111', '11111', '11111', '11111', '11111', '11111', '11111'], { z0: 0.5 });
-    const rina = kidneyChar(s, { who: 'rina', mood: 'happy', armL: { angle: -0.4 }, armR: { angle: 1.6, bend: 0 } });
+    const rina = kidneyChar(s, { who: 'rina', mood: 'happy', armL: { angle: -0.4 }, armR: { angle: 1.6, bend: 0, bendZ: 0.1, pose: 'abierta' } });
     rina.root.position.set(-0.95, 0, 3.4); rina.root.rotation.y = 0.3; rina.root.scale.setScalar(0.5);
-    const rony = kidneyChar(s, { who: 'rony', mood: 'happy', mirror: true, armL: { angle: -2.4 }, armR: { angle: 0.4 } });
+    const rony = kidneyChar(s, { who: 'rony', mood: 'happy', mirror: true, armL: { angle: -2.4, pose: 'abierta' }, armR: { angle: 0.4 } });
     rony.root.position.set(1.0, 0, 3.3); rony.root.rotation.y = -0.3; rony.root.scale.setScalar(0.5);
     const c = cam(aspect, [0, 2.4, 9.5], [0, 1.9, 0], 42);
     const update = t => {
       flow(t);
-      setArm(rony.aL, -1, -2.4 - 0.35 * wave(t, 1.6)); // saluda
+      setArm(rony.aL, -1, -2.4 - 0.15 * wave(t, 1.6)); rony.aL.el.rotation.z = -(0.2 + 0.55 * wave(t, 1.6)); // saluda desde el codo
       setArm(rina.aR, 1, 1.6 + 0.12 * wave(t, 0.6)); // presenta
       rina.root.position.y = 0.04 * Math.abs(wave(t, 1.0)); rony.root.position.y = 0.04 * Math.abs(wave(t, 1.0, 0.8));
       const u = ease(t / 8);
@@ -205,9 +209,9 @@ export const SCENES = {
     const cuff = bpCuff(s, [1.0, 2.0, 2.2], 0.9); cuff.rotation.set(0, -0.35, 0.05);
     const jets = [];
     for (let k = 0; k < 3; k++) jets.push(add(s, cyl(0.04, 0.12, 1.6, 16), mat(0xbfe3ff, { transparent: true, opacity: 0.45, emissive: 0x7fc8ff, emissiveIntensity: 0.4 }), [0.1 - k * 0.25, 1.5 - k * 0.1, 1.2], [1.2, 0, 0.9 + k * 0.15]));
-    const rina = kidneyChar(s, { who: 'rina', mood: 'angry', armL: { angle: -2.0 }, armR: { angle: 0.6, bend: -1.2 } });
+    const rina = kidneyChar(s, { who: 'rina', mood: 'angry', armL: { angle: -2.0, pose: 'puno' }, armR: { angle: 0.6, bend: -1.2, pose: 'puno' } });
     rina.root.position.set(-0.9, 0, 0.0); rina.root.scale.setScalar(0.55);
-    const rony = kidneyChar(s, { who: 'rony', mood: 'angry', mirror: true, armL: { angle: -0.6, bend: -1.2 }, armR: { angle: 0.6, bend: -1.2 } });
+    const rony = kidneyChar(s, { who: 'rony', mood: 'angry', mirror: true, armL: { angle: -0.6, bend: -1.2, pose: 'puno' }, armR: { angle: 0.6, bend: -1.2, pose: 'puno' } });
     rony.root.position.set(0.95, 0, -0.2); rony.root.scale.setScalar(0.55);
     const c = cam(aspect, [0.2, 3.0, 9.5], [0, 2.0, 0], 42);
     const update = t => {
@@ -215,7 +219,7 @@ export const SCENES = {
       sugar.position.y = 3.1 + 0.18 * Math.abs(wave(t, 1.1)); sugar.rotation.z = -0.1 + 0.12 * wave(t, 1.1);
       cuff.scale.setScalar(0.9 * (1 + 0.07 * Math.max(0, wave(t, 1.8))));
       jets.forEach((j, k) => { j.material.opacity = 0.25 + 0.3 * (0.5 + 0.5 * wave(t, 6, k)); j.scale.y = 0.85 + 0.25 * (0.5 + 0.5 * wave(t, 6, k)); });
-      setArm(rina.aL, -1, -2.0 - 0.25 * wave(t, 2.5)); rony.root.rotation.z = 0.06 * wave(t, 2.5);
+      setArm(rina.aL, -1, -2.0 - 0.15 * wave(t, 2.5)); rina.aL.el.rotation.z = -(0.25 + 0.35 * wave(t, 2.5)); rony.root.rotation.z = 0.06 * wave(t, 2.5);
       const u = ease(t / 0.5); // entrada con paneo rápido
       moveCam(c, [lerp(-2.4, 0.2, u), 3.0, 9.5], new THREE.Vector3(lerp(-1.8, 0, u), 2.0, 0));
     };
@@ -261,9 +265,9 @@ export const SCENES = {
     stdLights(s, { key: 0xfff1dc, keyI: 2.0, hemiSky: 0x3a7ca5, hemiGround: 0x0b1a28, hemiI: 0.8, rim: 0x6be38a, rimI: 1.6 });
     const units = nephronField(s, ['s0ss0', 'sss0s', 'ss0ss', '0ssss', 'ss0ss', 's0sss'], { z0: 1.2 });
     const shields = units.filter(u => u.shield).sort((a, b) => a.userData.ri - b.userData.ri || a.userData.ci - b.userData.ci);
-    const rina = kidneyChar(s, { who: 'rina', mood: 'happy', armL: { angle: -0.4 }, armR: { angle: 2.5, bend: 0 } });
+    const rina = kidneyChar(s, { who: 'rina', mood: 'happy', armL: { angle: -0.4 }, armR: { angle: 2.5, bend: 0, bendZ: 0.1, pose: 'abierta' } });
     rina.root.position.set(-0.68, 0, 3.0); rina.root.scale.setScalar(0.45); rina.root.rotation.y = 0.35;
-    const rony = kidneyChar(s, { who: 'rony', mood: 'happy', mirror: true, armL: { angle: -2.5, bend: 0 }, armR: { angle: 0.4 } });
+    const rony = kidneyChar(s, { who: 'rony', mood: 'happy', mirror: true, armL: { angle: -2.5, bend: 0, bendZ: 0.1, pose: 'abierta' }, armR: { angle: 0.4 } });
     rony.root.position.set(0.72, 0, 3.0); rony.root.scale.setScalar(0.45); rony.root.rotation.y = -0.35;
     const c = cam(aspect, [0, 2.6, 9.5], [0, 2.0, 0], 42);
     const update = t => {

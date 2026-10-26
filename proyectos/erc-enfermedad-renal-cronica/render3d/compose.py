@@ -1,12 +1,12 @@
 """Compone las capas renderizadas en las imágenes finales 1080x1920 de cada escena.
-Uso: python3 compose.py  → ../assets/escenas/escena-N.png"""
+Uso: python3 compose.py  → out/compuestas/escena-N.png"""
 import json
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).parent
 OUT = ROOT / 'out'
-DEST = ROOT.parent / 'assets' / 'escenas'
+DEST = ROOT / 'out' / 'compuestas'  # revisión; las aprobadas se copian a ../assets/escenas
 DEST.mkdir(parents=True, exist_ok=True)
 meta = json.loads((OUT / 'meta.json').read_text())
 

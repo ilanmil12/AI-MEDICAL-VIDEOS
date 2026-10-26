@@ -200,11 +200,13 @@ cumbia(e[1]['inicio'] + 1.7, e[3]['inicio'], 0.8)
 cumbia(e[3]['inicio'], e[4]['inicio'], 0.55, melodia=False)       # más tenue: "en silencio"
 villano(e[4]['inicio'], e[5]['inicio'])
 investigacion(e[5]['inicio'], e[6]['inicio'])
-cumbia(e[6]['inicio'], e[8]['inicio'] + e[8]['dur'] - 1.4, 1.1)  # regresa con energía
-fin = e[8]['inicio'] + e[8]['dur'] - 1.4
-for m in (55, 59, 62, 67, 71):                                   # acorde final
-    place(musica, accordion(midi(m), 1.6) * np.linspace(1, 0, int(1.6 * SR)) ** 1.5, fin, 0.12)
-place(musica, bass(midi(43), 1.4), fin, 0.6)
+fin = e[8]['voz_inicio'] + e[8]['voz_dur'] + 0.35                # cierre musical al terminar la voz
+cumbia(e[6]['inicio'], fin, 1.1)                                 # regresa con energía
+for m in (55, 59, 62, 67, 71):                                   # acorde final que se desvanece (sin corte seco)
+    place(musica, accordion(midi(m), 2.8) * np.exp(-t_arr(2.8) * 1.3), fin, 0.13)
+place(musica, bass(midi(43), 2.0) * np.exp(-t_arr(2.0) * 1.5), fin, 0.6)
+for k, m in enumerate((79, 83, 86, 91)):                         # arpegio de campanitas de despedida
+    place(musica, bell(midi(m), 1.6, 3.5), fin + 0.25 + k * 0.14, 0.06)
 
 # ---------- Efectos ----------
 sfx = np.zeros(N)
@@ -260,6 +262,8 @@ d = int(0.012 * SR)
 mezcla_r[d:] += (musica[:-d] * duck[:-d]) * 0.06
 st = np.stack([mezcla_l, mezcla_r], 1)
 st *= 0.95 / np.abs(st).max()
+nf = int(1.2 * SR); fin_v = int(TL['total'] * SR)                # fundido de salida del audio
+st[fin_v - nf:fin_v] *= np.linspace(1, 0, nf)[:, None] ** 2; st[fin_v:] = 0
 
 
 def wav(path, x):
