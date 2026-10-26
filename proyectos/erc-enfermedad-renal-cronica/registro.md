@@ -6,7 +6,7 @@
 | 1. Ganchos | ✅ Aprobada |
 | 2. Evidencia | ✅ Aprobada |
 | 3. Guion y storyboard | ✅ Aprobada (guion v1, 8 escenas, ~58 s) |
-| 4. Diseño visual | ⏳ En curso — guía de continuidad lista; falta herramienta de generación 3D |
+| 4. Diseño visual | ⏳ En revisión — 8 escenas 3D generadas por código (Three.js) |
 | 5. Primer borrador | Pendiente |
 | 6. Auditoría | Pendiente |
 | 7. Producto final | Pendiente |
@@ -56,7 +56,8 @@ guion-v1.md (~58 s, 8 escenas) — APROBADO · storyboard/ (bocetos vectoriales 
 - Pendientes: ninguna
 
 ## Recursos visuales definitivos
-—
+- v1 (en revisión): assets/escenas/escena-1..8.png (1080×1920), hoja: assets/hoja-escenas-3d.png
+- Motor: render3d/ (Three.js + Chromium sin interfaz; `node render.js && python3 compose.py`)
 
 ## Versiones del borrador
 —

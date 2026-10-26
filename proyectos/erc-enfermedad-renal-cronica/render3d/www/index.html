@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { SCENES, SCENE_LIST } from '/www/scenes.js';
+
+const q = new URLSearchParams(location.search);
+const id = +q.get('scene'), layer = q.get('layer') || 'main';
+const W = +(q.get('w') || 1080), H = +(q.get('h') || 1920);
+try {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1); renderer.setSize(W, H);
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  document.body.appendChild(renderer.domElement);
+  const env = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+
+  const [name, opts] = SCENE_LIST[id];
+  const { layers, meta } = SCENES[name](W / H * (layer === 'top' || layer === 'bottom' ? 0.5 : 1), opts);
+  const L = layers[layer];
+  L.scene.environment = env; L.scene.environmentIntensity = 0.45;
+  L.camera.aspect = W / H; L.camera.updateProjectionMatrix();
+
+  const composer = new EffectComposer(renderer);
+  composer.setPixelRatio(1); composer.setSize(W, H);
+  composer.addPass(new RenderPass(L.scene, L.camera));
+  if (L.bloom) composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), L.bloom, 0.5, 0.93));
+  composer.addPass(new OutputPass());
+  composer.render();
+
+  // proyección de cajas de metadatos a píxeles
+  const out = {};
+  if (meta.xrayBox) {
+    const pts = meta.xrayBox.map(p => new THREE.Vector3(...p).project(L.camera));
+    const xs = pts.map(p => (p.x + 1) / 2 * W), ys = pts.map(p => (1 - p.y) / 2 * H);
+    out.xrayRect = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)].map(Math.round);
+  }
+  window.__meta = out;
+  window.__png = renderer.domElement.toDataURL('image/png');
+  window.__done = true;
+} catch (e) { window.__error = String(e && e.stack || e); window.__done = true; }
+</script>
+</body></html>
